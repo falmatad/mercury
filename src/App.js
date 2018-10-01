@@ -11,16 +11,17 @@ class App extends React.Component {
   }
 
   handleSearchChange = (search) => {
-    console.log('search for', search)
+    this.props.load(search)
   }
 
   render() {
-    const { loaded } = this.props
+    const { loaded, people } = this.props
 
     return (
       <div className="App">
         <SearchableList
           loaded={loaded}
+          items={people}
           onSearchChange={this.handleSearchChange}
         />
       </div>
@@ -35,6 +36,7 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   loaded: state.loaded,
+  people: state.people,
 })
 
 const mapDispatchToProps = {
