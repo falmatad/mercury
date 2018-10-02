@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styles from './ListControls.module.scss'
 
 class ListControls extends React.Component {
   state = {
@@ -22,7 +23,7 @@ class ListControls extends React.Component {
     const { disabled } = this.props
     const { search } = this.state
     return (
-      <div className="ListControls">
+      <div className={styles.root}>
         <input
           type="text"
           value={search}

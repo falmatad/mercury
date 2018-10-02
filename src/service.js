@@ -1,12 +1,9 @@
-import { action } from './reducer'
-
 const SPECIES = {
   'https://swapi.co/api/species/1/': 'human',
   'https://swapi.co/api/species/2/': 'droid',
 }
 
-const simplifyPersonResponse = (resp) => {
-  const people = resp.results.map(person => {
+const simplifyPerson = (person) => {
     const {
       name,
       height,
@@ -21,14 +18,16 @@ const simplifyPersonResponse = (resp) => {
       gender,
       species: SPECIES[species[0]],
     }
-  })
+}
+
+const simplifyPersonResponse = (resp) => {
   return {
     count: resp.count,
-    people,
+    people: resp.results.map(simplifyPerson),
   }
 }
 
-const api = {
+export default {
   load: (search) => {
     const query = search ? `?search=${search}` : ''
     const url = `https://swapi.co/api/people/${query}`
@@ -36,17 +35,4 @@ const api = {
       .then(resp => resp.json())
       .then(simplifyPersonResponse)
   },
-}
-
-
-
-export const load = (search) => {
-  return (dispatch) => {
-    dispatch(action.load())
-    return api.load(search)
-      .then(response => {
-        const { count, people } = response
-        dispatch(action.loadSuccess(people, count))
-      })
-  }
 }

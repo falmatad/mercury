@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SearchableList from '../components/SearchableList'
 import { connect } from 'react-redux'
-import * as thunks from '../thunks'
+import { thunks } from '../redux'
 
 class App extends React.Component {
   componentDidMount() {
@@ -17,13 +17,11 @@ class App extends React.Component {
     const { loaded, people } = this.props
 
     return (
-      <div>
-        <SearchableList
-          loaded={loaded}
-          items={people}
-          onSearchChange={this.handleSearchChange}
-        />
-      </div>
+      <SearchableList
+        loaded={loaded}
+        items={people}
+        onSearchChange={this.handleSearchChange}
+      />
     )
   }
 }
@@ -31,6 +29,7 @@ class App extends React.Component {
 App.propTypes = {
   load: PropTypes.func.isRequired,
   loaded: PropTypes.bool.isRequired,
+  people: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = state => ({
