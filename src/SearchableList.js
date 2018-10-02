@@ -12,7 +12,9 @@ const SearchableList = (props) => (
     {
       props.loaded
       ? <List items={props.items} />
-      : <div>loading...</div>
+      : <div>
+          <span className="fas fa-spinner" />
+        </div>
     }
   </div>
 )

@@ -3,7 +3,11 @@ const LOAD_SUCCESS = 'people/LOAD_SUCCESS'
 
 export const action = {
   load: () => ({ type: LOAD }),
-  loadSuccess: (response) => ({ type: LOAD_SUCCESS, response }),
+  loadSuccess: (people, count) => ({
+    type: LOAD_SUCCESS,
+    people,
+    count,
+  }),
 }
 
 const initialState = {
@@ -24,8 +28,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loaded: true,
-        people: action.response.results,
-        count: action.response.count,
+        people: action.people,
+        count: action.count,
       }
 
     default:
