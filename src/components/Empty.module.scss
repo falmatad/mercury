@@ -1,0 +1,26 @@
+@import '../styles/_theme.scss';
+
+.root {
+  display: flex;
+}
+
+.icon {
+  font-size: $bigfont;
+}
+
+.content {
+  flex: 1;
+  margin-left: 1.5em;
+}
+
+.message {
+  font-size: $bigfont;
+  line-height: 1em;
+  margin-bottom: 0.3em;
+}
+
+.submessage {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
