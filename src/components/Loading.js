@@ -1,13 +1,11 @@
 import React from 'react'
-import styles from './Loading.module.scss'
+import ListMessage from './ListMessage'
 
 const Loading = () => (
-  <div className={styles.root}>
-    <span className="fas fa-spinner" />
-    <div className={styles.text}>
-      Loading...
-    </div>
-  </div>
+  <ListMessage
+    iconClassName="fas fa-spinner"
+    message="Loading..."
+  />
 )
 
 export default Loading

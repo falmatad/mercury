@@ -6,6 +6,7 @@
 
 .icon {
   font-size: $bigfont;
+
 }
 
 .content {
@@ -22,3 +23,19 @@
 .submessage {
   @extend %boldfont;
 }
+
+:global {
+  .fa-spinner {
+    animation: spin infinite 3s linear;
+  }
+
+  @keyframes:global(spin) {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
