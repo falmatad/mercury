@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './App.css'
-import SearchableList from './SearchableList'
+import SearchableList from '../components/SearchableList'
 import { connect } from 'react-redux'
-import * as thunks from './thunks'
+import * as thunks from '../thunks'
 
 class App extends React.Component {
   componentDidMount() {
@@ -18,7 +17,7 @@ class App extends React.Component {
     const { loaded, people } = this.props
 
     return (
-      <div className="App">
+      <div>
         <SearchableList
           loaded={loaded}
           items={people}
