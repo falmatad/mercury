@@ -16,7 +16,9 @@ const ListMessage = (props) => {
       <div className={styles.content}>
         <div className={styles.message}>{message}</div>
         { submessage &&
-          <div className={styles.submessage}>{submessage}</div>
+            <div className={styles.submessage}>
+              {submessage}
+            </div>
         }
       </div>
     </div>
@@ -26,7 +28,7 @@ const ListMessage = (props) => {
 ListMessage.propTypes = {
   iconClassName: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  submessage: PropTypes.string,
+  submessage: PropTypes.node,
 }
 
 export default ListMessage

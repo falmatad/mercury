@@ -1,28 +1,5 @@
-@import '../styles/_theme.scss';
-
-.root {
-  padding: 1.5em;
-  display: flex;
-  &:nth-child(even) {
-    background-color: $primary;
-  }
-}
-
-.info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.name {
-  font-size: $bigfont;
-}
-
 .stats {
-  @extend %boldfont;
-
   display: flex;
-
 
   span:after {
     $size: 7px;

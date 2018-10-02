@@ -1,7 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './ListItem.module.scss'
-import Avatar from './Avatar'
+import ListMessage from './ListMessage'
+
+const icon = {
+  droid: 'fab fa-android',
+  human: 'fas fa-user-circle',
+}
 
 const ListItem = (props) => {
   const {
@@ -13,13 +18,14 @@ const ListItem = (props) => {
       species,
     },
   } = props
+
+  const iconClassName = icon[species] || 'fas fa-question'
+
   return (
-    <div className={styles.root}>
-      <Avatar type={species} />
-      <div className={styles.info}>
-        <div className={styles.name}>
-          { name }
-        </div>
+    <ListMessage
+      iconClassName={iconClassName}
+      message={name}
+      submessage={
         <div className={styles.stats}>
           <span>
             height: { height }
@@ -31,8 +37,8 @@ const ListItem = (props) => {
             gender: { gender }
           </span>
         </div>
-      </div>
-    </div>
+      }
+    />
   )
 }
 

@@ -2,11 +2,14 @@
 
 .root {
   display: flex;
+  padding: 1.5em;
+  &:nth-child(even) {
+    background-color: $primary;
+  }
 }
 
 .icon {
   font-size: $bigfont;
-
 }
 
 .content {

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ListControls from './ListControls'
 import List from './List'
-import Loading from './Loading'
 import styles from './SearchableList.module.scss'
 
 const SearchableList = (props) => (
@@ -11,11 +10,10 @@ const SearchableList = (props) => (
       disabled={!props.loaded}
       onSearchChange={props.onSearchChange}
     />
-    {
-      props.loaded
-        ? <List items={props.items} />
-        : <Loading />
-    }
+    <List
+      items={props.items}
+      loading={!props.loaded}
+    />
   </div>
 )
 
