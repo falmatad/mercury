@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './ListControls.module.scss'
+import Select from 'react-select'
 
 class ListControls extends React.Component {
   state = {
@@ -32,12 +33,16 @@ class ListControls extends React.Component {
           onChange={this.handleInputChange}
           className={styles.input}
         />
-        <select
-          disabled={disabled}
-          className={styles.dropdown}
-        >
-          <option default>Sort results...</option>
-        </select>
+        <Select
+          className={styles.select}
+          isDisabled={disabled}
+          isSearchable={false}
+          placeholder="Sort results..."
+          options={[
+            { value: 'A-Z', label: 'A-Z' },
+            { value: 'Z-A', label: 'Z-A' },
+          ]}
+        />
       </div>
     )
   }
