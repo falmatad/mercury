@@ -22,13 +22,13 @@ const ListItem = (props) => {
         </div>
         <div className={styles.stats}>
           <span>
-            { height }
+            height: { height }
           </span>
           <span>
-            { mass }
+            mass: { mass }
           </span>
           <span>
-            { gender }
+            gender: { gender }
           </span>
         </div>
       </div>

@@ -20,7 +20,5 @@
 }
 
 .submessage {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1.2em;
+  @extend %boldfont;
 }
