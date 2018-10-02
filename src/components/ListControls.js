@@ -30,9 +30,11 @@ class ListControls extends React.Component {
           placeholder="Search..."
           disabled={disabled}
           onChange={this.handleInputChange}
+          className={styles.input}
         />
         <select
           disabled={disabled}
+          className={styles.dropdown}
         >
           <option default>Sort results...</option>
         </select>
