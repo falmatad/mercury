@@ -68,6 +68,8 @@ export const reducer = (state = initialState, action) => {
         search: action.search,
         loaded: false,
         page: action.page,
+        count: state.search !== action.search ? undefined : state.count,
+        people: state.search !== action.search ? [] : state.people,
       }
 
     case LOAD_SUCCESS:

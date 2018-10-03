@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styles from './Paging.module.scss'
+
+const getFriendlyNumber = (x) => isNaN(x) ? '?' : x
 
 const Paging = (props) => {
   const {
@@ -11,13 +14,18 @@ const Paging = (props) => {
     hasNext,
     hasPrev,
   } = props
-  const pageTotal = Math.ceil(total / 10)
+  const itemTotal = getFriendlyNumber(total)
+  const pageTotal = getFriendlyNumber(Math.ceil(total / 10))
   return (
-    <div>
-      items: {count} / {total}<br />
-      pages: {page} / {pageTotal}
-      { hasPrev && <button onClick={onPrevPage}>prev</button> }
-      { hasNext && <button onClick={onNextPage}>next</button> }
+    <div className={styles.root}>
+      <div>
+        {count} of {itemTotal} items
+      </div>
+      <div>
+        page {page} of {pageTotal}
+        <button disabled={!hasPrev} onClick={onPrevPage}>prev</button>
+        <button disabled={!hasNext} onClick={onNextPage}>next</button>
+      </div>
     </div>
   )
 }
