@@ -27,8 +27,8 @@ const SearchableList = (props) => (
 )
 
 SearchableList.propTypes = {
-  count: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired,
+  count: PropTypes.number,
+  page: PropTypes.number,
   items: PropTypes.array.isRequired,
   loaded: PropTypes.bool.isRequired,
   hasNext: PropTypes.bool,

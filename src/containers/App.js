@@ -55,12 +55,12 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  count: PropTypes.number.isRequired,
-  hasNext: PropTypes.bool.isRequired,
-  hasPrev: PropTypes.bool.isRequired,
+  count: PropTypes.number,
+  hasNext: PropTypes.bool,
+  hasPrev: PropTypes.bool,
   load: PropTypes.func.isRequired,
   loaded: PropTypes.bool.isRequired,
-  page: PropTypes.number.isRequired,
+  page: PropTypes.number,
   people: PropTypes.array.isRequired,
   search: PropTypes.string,
   setSort: PropTypes.func.isRequired,

@@ -84,12 +84,11 @@ ListControls.propTypes = {
   disabled: PropTypes.bool.isRequired,
   hasNext: PropTypes.bool,
   hasPrev: PropTypes.bool,
-  loaded: PropTypes.bool.isRequired,
   onNextPage: PropTypes.func.isRequired,
   onPrevPage: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   onSortChange: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
+  page: PropTypes.number,
   totalCount: PropTypes.number,
   sort: PropTypes.string,
 }

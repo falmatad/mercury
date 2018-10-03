@@ -4,6 +4,7 @@ const LOAD = 'people/LOAD'
 const LOAD_SUCCESS = 'people/LOAD_SUCCESS'
 const SET_SORT = 'people/SET_SORT'
 
+// micro factories to create actions
 export const actions = {
   load: (search, page) => ({
     type: LOAD,
@@ -26,13 +27,9 @@ export const actions = {
 const initialState = {
   loaded: false,
   people: [],
-  count: undefined,
-  sort: undefined,
-  page: undefined,
-  hasPrev: undefined,
-  hasNext: undefined,
 }
 
+// reusable curried sorter
 const getSorterByField = (field, asc) => {
   const direction = asc ? 1 : -1
   return (a, b) => {
@@ -98,7 +95,7 @@ export const reducer = (state = initialState, action) => {
 const load = (search = '', page = 1) => {
   return (dispatch) => {
     dispatch(actions.load(search, page))
-    return service.load(search, page)
+    return service.loadPeople(search, page)
       .then(response => {
         const { count, people, next, previous } = response
         dispatch(actions.loadSuccess(people, count, next, previous))

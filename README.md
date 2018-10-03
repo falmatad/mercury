@@ -1,8 +1,21 @@
-## TODO
+## Installation
 
+```sh
+git clone
+cd mercury
+yarn
+```
 
-* test
-https://swapi.co/api/species/
+## Run
 
+```sh
+yarn start
+```
 
-For each person, make sure we know the species.
+## High Points
+
+* All state in Redux, completely transversible
+* Debounced search
+* Abstracted components used for list items/messages
+* Accessing state/dispatching _only_ from HOC - all others are dumb components
+* Separation of Redux thunks and service call

@@ -3,7 +3,7 @@
 $padding: 1em;
 
 .root {
-  border-bottom: 1px solid $primary;
+  border-bottom: $border;
   padding-top: 1.5em;
   > div {
     display: flex;
@@ -15,6 +15,7 @@ $padding: 1em;
   padding: $padding;
   width: 300px;
   font-weight: bold;
+  border: $border;
 }
 
 .select {

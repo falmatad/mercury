@@ -1,4 +1,7 @@
 $primary: #eee;
+$secondary: darken($primary, 50);
+$border: 1px solid $primary;
+
 $bigfont: 3em;
 %boldfont {
   font-weight: bold;

@@ -42,8 +42,8 @@ Paging.propTypes = {
   hasPrev: PropTypes.bool,
   onNextPage: PropTypes.func.isRequired,
   onPrevPage: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
+  page: PropTypes.number,
+  total: PropTypes.number,
 }
 
 export default Paging
