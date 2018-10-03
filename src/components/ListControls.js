@@ -11,9 +11,14 @@ class ListControls extends React.Component {
   handleInputChange = (event) => {
     this.setState({ search: event.target.value })
     clearTimeout(this.searchTimeout)
+    const searchDelay = 500
     this.searchTimeout = setTimeout(() => {
       this.props.onSearchChange(this.state.search)
-    }, 500)
+    }, searchDelay)
+  }
+
+  handleSelectChange = (event) => {
+    this.props.onSortChange(event.value)
   }
 
   componentWillUnmount() {
@@ -21,8 +26,13 @@ class ListControls extends React.Component {
   }
 
   render() {
-    const { disabled } = this.props
+    const { disabled, sort } = this.props
     const { search } = this.state
+    const options = [
+      { value: 'asc', label: 'A-Z' },
+      { value: 'desc', label: 'Z-A' },
+    ]
+    const selectValue = options.find(x => x.value === sort)
     return (
       <div className={styles.root}>
         <input
@@ -38,10 +48,9 @@ class ListControls extends React.Component {
           isDisabled={disabled}
           isSearchable={false}
           placeholder="Sort results..."
-          options={[
-            { value: 'A-Z', label: 'A-Z' },
-            { value: 'Z-A', label: 'Z-A' },
-          ]}
+          options={options}
+          onChange={this.handleSelectChange}
+          value={selectValue}
         />
       </div>
     )
@@ -51,6 +60,8 @@ class ListControls extends React.Component {
 ListControls.propTypes = {
   disabled: PropTypes.bool.isRequired,
   onSearchChange: PropTypes.func.isRequired,
+  onSortChange: PropTypes.func.isRequired,
+  sort: PropTypes.string,
 }
 
 export default ListControls

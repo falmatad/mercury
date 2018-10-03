@@ -9,6 +9,8 @@ const SearchableList = (props) => (
     <ListControls
       disabled={!props.loaded}
       onSearchChange={props.onSearchChange}
+      onSortChange={props.onSortChange}
+      sort={props.sort}
     />
     <List
       items={props.items}
@@ -20,7 +22,9 @@ const SearchableList = (props) => (
 SearchableList.propTypes = {
   loaded: PropTypes.bool.isRequired,
   onSearchChange: PropTypes.func.isRequired,
+  onSortChange: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
+  sort: PropTypes.string,
 }
 
 export default SearchableList
