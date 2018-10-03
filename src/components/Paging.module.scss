@@ -1,4 +1,12 @@
+$space: 0.3em;
+
 .root {
   display: flex;
   justify-content: space-between;
+  padding: $space;
+}
+
+.buttons {
+  display: inline-block;
+  margin-left: $space;
 }

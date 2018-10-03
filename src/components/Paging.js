@@ -18,13 +18,19 @@ const Paging = (props) => {
   const pageTotal = getFriendlyNumber(Math.ceil(total / 10))
   return (
     <div className={styles.root}>
-      <div>
+      <div className={styles.info}>
         {count} of {itemTotal} items
       </div>
       <div>
         page {page} of {pageTotal}
-        <button disabled={!hasPrev} onClick={onPrevPage}>prev</button>
-        <button disabled={!hasNext} onClick={onNextPage}>next</button>
+        <div className={styles.buttons}>
+          <button disabled={!hasPrev} onClick={onPrevPage}>
+            <span className="fas fa-chevron-left" />
+          </button>
+          <button disabled={!hasNext} onClick={onNextPage}>
+            <span className="fas fa-chevron-right" />
+          </button>
+        </div>
       </div>
     </div>
   )

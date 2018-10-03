@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './ListControls.module.scss'
 import Select from 'react-select'
+import Paging from './Paging'
+import styles from './ListControls.module.scss'
 
 class ListControls extends React.Component {
   state = {
@@ -26,7 +27,17 @@ class ListControls extends React.Component {
   }
 
   render() {
-    const { disabled, sort } = this.props
+    const {
+      count,
+      disabled,
+      hasNext,
+      hasPrev,
+      onNextPage,
+      onPrevPage,
+      page,
+      sort,
+      totalCount,
+    } = this.props
     const { search } = this.state
     const options = [
       { value: 'asc', label: 'A-Z' },
@@ -35,22 +46,33 @@ class ListControls extends React.Component {
     const selectValue = options.find(x => x.value === sort)
     return (
       <div className={styles.root}>
-        <input
-          type="text"
-          value={search}
-          placeholder="Search..."
-          disabled={disabled}
-          onChange={this.handleInputChange}
-          className={styles.input}
-        />
-        <Select
-          className={styles.select}
-          isDisabled={disabled}
-          isSearchable={false}
-          placeholder="Sort results..."
-          options={options}
-          onChange={this.handleSelectChange}
-          value={selectValue}
+        <div>
+          <input
+            type="text"
+            value={search}
+            placeholder="Search..."
+            disabled={disabled}
+            onChange={this.handleInputChange}
+            className={styles.input}
+          />
+          <Select
+            className={styles.select}
+            isDisabled={disabled}
+            isSearchable={false}
+            placeholder="Sort results..."
+            options={options}
+            onChange={this.handleSelectChange}
+            value={selectValue}
+          />
+        </div>
+        <Paging
+          count={count}
+          total={totalCount}
+          page={page}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+          onNextPage={onNextPage}
+          onPrevPage={onPrevPage}
         />
       </div>
     )
@@ -58,9 +80,17 @@ class ListControls extends React.Component {
 }
 
 ListControls.propTypes = {
+  count: PropTypes.number.isRequired,
   disabled: PropTypes.bool.isRequired,
+  hasNext: PropTypes.bool,
+  hasPrev: PropTypes.bool,
+  loaded: PropTypes.bool.isRequired,
+  onNextPage: PropTypes.func.isRequired,
+  onPrevPage: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   onSortChange: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  totalCount: PropTypes.number,
   sort: PropTypes.string,
 }
 

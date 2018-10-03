@@ -4,9 +4,11 @@ $padding: 1em;
 
 .root {
   border-bottom: 1px solid $primary;
-  padding: 1.5em 0;
-  display: flex;
-  justify-content: space-between;
+  padding-top: 1.5em;
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .input {

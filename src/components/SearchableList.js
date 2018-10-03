@@ -2,25 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import List from './List'
 import ListControls from './ListControls'
-import Paging from './Paging'
 import styles from './SearchableList.module.scss'
 
 const SearchableList = (props) => (
   <div className={styles.root}>
     <ListControls
-      disabled={!props.loaded}
-      onSearchChange={props.onSearchChange}
-      onSortChange={props.onSortChange}
-      sort={props.sort}
-    />
-    <Paging
       count={props.items.length}
-      total={props.count}
-      page={props.page}
-      hasPrev={props.hasPrev}
+      disabled={!props.loaded}
       hasNext={props.hasNext}
+      hasPrev={props.hasPrev}
       onNextPage={props.onNextPage}
       onPrevPage={props.onPrevPage}
+      onSearchChange={props.onSearchChange}
+      onSortChange={props.onSortChange}
+      page={props.page}
+      sort={props.sort}
+      totalCount={props.count}
     />
     <List
       items={props.items}
