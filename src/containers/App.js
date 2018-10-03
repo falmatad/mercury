@@ -17,32 +17,64 @@ class App extends React.Component {
     this.props.setSort(sort)
   }
 
+  handleNextPage = () => {
+    this.props.load(this.props.search, this.props.page + 1)
+  }
+
+  handlePrevPage = () => {
+    this.props.load(this.props.search, this.props.page - 1)
+  }
+
   render() {
-    const { loaded, people, sort } = this.props
+    const {
+      count,
+      hasNext,
+      hasPrev,
+      loaded,
+      people,
+      sort,
+      page,
+    } = this.props
 
     return (
       <SearchableList
-        loaded={loaded}
+        count={count}
         items={people}
-        sort={sort}
+        loaded={loaded}
+        onNextPage={this.handleNextPage}
+        onPrevPage={this.handlePrevPage}
         onSearchChange={this.handleSearchChange}
         onSortChange={this.handleSortChange}
+        hasPrev={hasPrev}
+        hasNext={hasNext}
+        sort={sort}
+        page={page}
       />
     )
   }
 }
 
 App.propTypes = {
+  count: PropTypes.number.isRequired,
+  hasNext: PropTypes.bool.isRequired,
+  hasPrev: PropTypes.bool.isRequired,
   load: PropTypes.func.isRequired,
   loaded: PropTypes.bool.isRequired,
+  page: PropTypes.number.isRequired,
   people: PropTypes.array.isRequired,
+  search: PropTypes.string,
   setSort: PropTypes.func.isRequired,
   sort: PropTypes.string,
 }
 
 const mapStateToProps = state => ({
+  count: state.count,
+  hasNext: state.hasNext,
+  hasPrev: state.hasPrev,
   loaded: state.loaded,
+  page: state.page,
   people: state.people,
+  search: state.search,
   sort: state.sort,
 })
 

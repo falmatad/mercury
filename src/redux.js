@@ -5,11 +5,17 @@ const LOAD_SUCCESS = 'people/LOAD_SUCCESS'
 const SET_SORT = 'people/SET_SORT'
 
 export const actions = {
-  load: () => ({ type: LOAD }),
-  loadSuccess: (people, count) => ({
+  load: (search, page) => ({
+    type: LOAD,
+    search,
+    page,
+  }),
+  loadSuccess: (people, count, next, previous) => ({
     type: LOAD_SUCCESS,
     people,
     count,
+    next,
+    previous,
   }),
   setSort: (sort) => ({
     type: SET_SORT,
@@ -22,6 +28,9 @@ const initialState = {
   people: [],
   count: undefined,
   sort: undefined,
+  page: undefined,
+  hasPrev: undefined,
+  hasNext: undefined,
 }
 
 const getSorterByField = (field, asc) => {
@@ -56,7 +65,9 @@ export const reducer = (state = initialState, action) => {
     case LOAD:
       return {
         ...state,
+        search: action.search,
         loaded: false,
+        page: action.page,
       }
 
     case LOAD_SUCCESS:
@@ -65,6 +76,8 @@ export const reducer = (state = initialState, action) => {
         loaded: true,
         people: sortPeople(action.people, state.sort),
         count: action.count,
+        hasPrev: !!action.previous,
+        hasNext: !!action.next,
       }
 
     case SET_SORT:
@@ -80,13 +93,13 @@ export const reducer = (state = initialState, action) => {
 }
 
 // thunks
-const load = (search) => {
+const load = (search = '', page = 1) => {
   return (dispatch) => {
-    dispatch(actions.load())
-    return service.load(search)
+    dispatch(actions.load(search, page))
+    return service.load(search, page)
       .then(response => {
-        const { count, people } = response
-        dispatch(actions.loadSuccess(people, count))
+        const { count, people, next, previous } = response
+        dispatch(actions.loadSuccess(people, count, next, previous))
       })
   }
 }
