@@ -12,7 +12,7 @@ class ListControls extends React.Component {
   handleInputChange = (event) => {
     this.setState({ search: event.target.value })
     clearTimeout(this.searchTimeout)
-    const searchDelay = 500
+    const searchDelay = 1000
     this.searchTimeout = setTimeout(() => {
       this.props.onSearchChange(this.state.search)
     }, searchDelay)
