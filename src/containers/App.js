@@ -4,7 +4,21 @@ import SearchableList from '../components/SearchableList'
 import { connect } from 'react-redux'
 import { actions, thunks } from '../redux'
 
+const ColorShower = (props) => {
+  return(
+    <div>
+      {props.colors.map( color => {
+        return <p key={color}>{color}</p>
+      })}
+    </div>
+  )
+}
+
 class App extends React.Component {
+  state = {
+    colors: ['red', 'blue', 'green', 'brown'],
+  }
+
   componentDidMount() {
     this.props.load()
   }
@@ -37,6 +51,10 @@ class App extends React.Component {
     } = this.props
 
     return (
+      <div>
+
+      <ColorShower colors={this.state.colors}/>
+
       <SearchableList
         count={count}
         items={people}
@@ -50,6 +68,7 @@ class App extends React.Component {
         sort={sort}
         page={page}
       />
+      </div>
     )
   }
 }
