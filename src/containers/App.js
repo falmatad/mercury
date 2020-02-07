@@ -1,18 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchableList from '../components/SearchableList'
+import ColorList from "../components/ColorList"
 import { connect } from 'react-redux'
 import { actions, thunks } from '../redux'
 
-const ColorShower = (props) => {
-  return(
-    <div>
-      {props.colors.map( color => {
-        return <p key={color}>{color}</p>
-      })}
-    </div>
-  )
-}
 
 class App extends React.Component {
   state = {
@@ -53,7 +45,7 @@ class App extends React.Component {
     return (
       <div>
 
-      <ColorShower colors={this.state.colors}/>
+      <ColorList colors={this.state.colors}/>
 
       <SearchableList
         count={count}
